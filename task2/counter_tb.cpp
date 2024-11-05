@@ -22,7 +22,7 @@ int main(int argc, char **argv, char **env) {
 
     // initialize simulation inputs
     top->clk = 1;
-    top->rst = 1;
+    top->rst = 0;
     top->en = 1;
 
     // run simulation for many clock cycles
@@ -46,10 +46,9 @@ int main(int argc, char **argv, char **env) {
         vbdCycle(i+1);
 
         // end of Vbuddy output section
-        top->rst = (i < 2) | (i == 15);
-        if (0 == vbdFlag()) {
-            top->en = -1;
-        };
+        
+        top->en = vbdFlag();
+
 
         if (Verilated::gotFinish()) exit(0);
     

@@ -28,8 +28,8 @@ int main(int argc, char **argv, char **env) {
             top->clk = !top->clk;
             top->eval ();
         }
-        top->rst = (i < 2) | (i == 15);
-        top->en = (i>4);
+        top->rst = (i < 1);
+        top->en = (i < 9) | (i >= 12);
         if (Verilated::gotFinish()) exit(0);
     
     }
